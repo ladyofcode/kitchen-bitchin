@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/state';
+	import AuthGate from '$lib/components/AuthGate.svelte';
 	import TimerWidget from '$lib/components/TimerWidget.svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
 
@@ -13,6 +14,8 @@
 		{ href: '/settings', label: 'Settings' }
 	];
 </script>
+
+<AuthGate />
 
 <div class="flex min-h-dvh flex-col">
 	<header
