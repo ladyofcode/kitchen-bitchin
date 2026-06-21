@@ -66,7 +66,6 @@ export class VoiceListener {
 		try {
 			previous?.remove?.();
 		} catch {
-			void 0;
 		}
 	}
 
@@ -134,7 +133,6 @@ export class VoiceListener {
 			try {
 				this.recognizer.remove?.();
 			} catch {
-				void 0;
 			}
 			this.recognizer = null;
 		}
