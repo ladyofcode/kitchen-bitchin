@@ -47,6 +47,27 @@ pnpm dev          # start the dev server
 pnpm dev --open   # ...and open it in a browser
 ```
 
+## Voice recognition model
+
+Offline speech recognition (`vosk-browser`) loads a model from
+`static/models/vosk-model-small-en-us-0.15.tar.gz`, served as a static asset. The
+archive (~40 MB) is gitignored; fetch it once per env.
+
+`vosk-browser` expects a gzipped tar of the model folder, but Alphacephei ships a `.zip`, so it
+must be repackaged once:
+
+```sh
+mkdir -p static/models && cd static/models
+curl -LO https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip
+unzip vosk-model-small-en-us-0.15.zip
+tar czf vosk-model-small-en-us-0.15.tar.gz vosk-model-small-en-us-0.15
+rm -rf vosk-model-small-en-us-0.15 vosk-model-small-en-us-0.15.zip
+```
+
+The same file must be on deploy (served to the device and cached by the
+service worker for offline use) — run these steps as part of the build, or commit
+it via Git LFS.
+
 ## Building
 
 ```sh
